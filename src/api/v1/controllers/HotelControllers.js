@@ -5,6 +5,6 @@ exports.getAllHotels = async(req,res) => {
             const hotels = await Hotel.find()
             return res.status(200).json(hotels)
         }catch(error){
-            return res.status(404).json(error)
+            return res.status(500).json(error)
         }
 }

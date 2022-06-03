@@ -11,9 +11,9 @@ exports.createRoom = async(req,res) => {
         // await req.user.availableRooms.push(newRoom)
         await req.user.rooms.push(newRoom)
         await req.user.save()
-        res.status(201).json({message: `Room deleted.`})
+        res.status(200).json({message: `Room created.`})
     }catch(error){
-        res.status(501).json({message: error.message})
+        res.status(500).json({message: error.message})
     }
 }
 
@@ -53,7 +53,7 @@ exports.getRoomCount = async (req,res) => {
     if(hotel){
         return res.status(200).json({message: `Room count is ${hotel.totalRooms}`})
     }else{
-        return res.status(404).json({failure: `Hotel not found!`})
+        return res.status(500).json({failure: `Error in getting the room count!`})
     }
 }
 
@@ -69,8 +69,7 @@ exports.getRoomById = async (req,res) => {
 
 exports.checkIn = async(req,res) => {
    // While checking in, we need to - 1) update room status to Occupied 2) Add customer ID in currentlyOccupiedBy field
-   const { roomID } = req.params
-   const { customerID } = req.body
+   const { roomID, customerID } = req.params
    try{
        const room = await Room.findById(roomID)
        room.status = "Occupied"

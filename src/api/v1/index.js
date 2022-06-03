@@ -4,6 +4,8 @@ const morgan = require("morgan")
 const cors = require("cors")
 const session = require("express-session")
 const passport = require("./config/Passport_Setup")
+const swaggerUI = require("swagger-ui-express")
+const swaggerJsDoc = require("swagger-jsdoc")
 const { setUpMongo } = require("../../serverConfig/MongoDB_Setup")
 // const { setUpDayIndex } = require("./config/DayIndex_Setup")
 
@@ -16,7 +18,29 @@ const roomRoutes = require("./routes/Room")
 const bookingRoutes = require("./routes/Booking")
 const disputeRoutes = require("./routes/Dispute")
 
+const options = {
+    definition:{
+        openapi: "3.0.0",
+        info:{
+            title: "Hotel Management API",
+            version: "1.0.0",
+            description:"A basic hotel management API."
+        },
+        servers:[
+            {
+                url: "https://abhinavp06hotel.herokuapp.com/"
+            }
+        ]
+    },
+    apis:["./src/api/v1/routes/*.js"],
+}
+
+const specs = swaggerJsDoc(options)
+
+
 const app = express()
+
+app.use("/v1/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
 
 // SETTING UP
 setUpMongo()
