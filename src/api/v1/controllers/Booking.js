@@ -153,25 +153,39 @@ exports.cancelBooking = async (req,res) => {
     const { bookingID } = req.params
     // Get booking object
     const booking = await Booking.findOne({bookingID: bookingID})
-    // Get hotel
-    const hotel = await Hotel.findOne({hotelID: booking.bookedIn})
-    // Get booked room
-    const room = await Room.findOne({belongsTo: hotel._id, name: booking.roomBooked})
-    // Remove booking _id from Hotel's and Customer's bookings array
-    await hotel.bookings.pull(booking._id)
-    await req.user.bookings.pull(booking._id)
-    await hotel.save()
-    await req.user.save()
+    if(booking == null){
+        return res.status(404).json({message: `Booking does not exist! Kindly check the entered ID.`})
+    }else{
+        // Get hotel
+        const hotel = await Hotel.findOne({hotelID: booking.bookedIn})
+        // Get booked room
+        const room = await Room.findOne({belongsTo: hotel._id, name: booking.roomBooked})
+        // Remove booking _id from Hotel's and Customer's bookings array
+        await hotel.bookings.pull(booking._id)
+        await req.user.bookings.pull(booking._id)
+        await hotel.save()
+        await req.user.save()
 
-    // Remove room _id from the day indexes
-    const indexes = await DayIndex.find({dayIndex: {"$gte": dateToIndexConverter(booking.bookingFromDate), "$lte": dateToIndexConverter(booking.bookingToDate)}}) // Contains all the day indexes for the given range
-    await indexes.forEach(index => {
-        index.roomsOccupied.pull(room._id)
-        index.save()
-    })
-    // Send email to hotel and customer regarding the cancellation of the booking
-    await sendBookingCancelledEmail(booking, hotel, req.user.email)
-    // Delete the booking
-    await Booking.deleteOne({_id: booking._id})
-    return res.json("Done")
+        // Remove room _id from the day indexes
+        const indexes = await DayIndex.find({dayIndex: {"$gte": dateToIndexConverter(booking.bookingFromDate), "$lte": dateToIndexConverter(booking.bookingToDate)}}) // Contains all the day indexes for the given range
+        await indexes.forEach(index => {
+            index.roomsOccupied.pull(room._id)
+            index.save()
+        })
+        // Send email to hotel and customer regarding the cancellation of the booking
+        await sendBookingCancelledEmail(booking, hotel, req.user.email)
+        // Delete the booking
+        await Booking.deleteOne({_id: booking._id})
+        return res.status(200).json({message: `Your booking has been successfully cancelled!`})
+    }
+}
+
+exports.getBookingByID = async (req,res) => {
+    const { bookingID } = req.params
+    const booking = await Booking.findOne({bookingID: bookingID})
+    if(booking == null){
+        return res.status(404).json({message: `A booking with that ID does not exist! Kindly recheck the ID entered.`})
+    }else{
+        return res.status(200).json({message: booking})
+    }
 }
