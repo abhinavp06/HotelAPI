@@ -67,6 +67,12 @@ const { isSignedIn } = require("../middlewares/Authentication")
  *               phoneNum:
  *                  type: number
  *                  description: Phone number of the hotel
+ *               bookings:
+ *                    type: array
+ *                    description: Array of ObjectIds of bookings in the hotel
+ *               disputes:
+ *                    type: array
+ *                    description: Array or ObjectIds of disputes in the hotel
 */
 
 /**
