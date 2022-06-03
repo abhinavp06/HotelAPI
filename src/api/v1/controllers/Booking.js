@@ -1,4 +1,3 @@
-// TODO
 const Booking = require("../models/Booking")
 const Hotel = require("../models/Hotel")
 const Room = require("../models/Room")
@@ -186,6 +185,6 @@ exports.getBookingByID = async (req,res) => {
     if(booking == null){
         return res.status(404).json({message: `A booking with that ID does not exist! Kindly recheck the ID entered.`})
     }else{
-        return res.status(200).json({message: booking})
+        return res.status(200).json(booking)
     }
 }

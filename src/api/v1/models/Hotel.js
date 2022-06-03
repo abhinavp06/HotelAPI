@@ -32,42 +32,12 @@ const hotelSchema = new mongoose.Schema (
             max: 10,
             unique: true
         },
-        // currentBookings:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Booking'
-        //     }
-        // ],
-        // pastBookings:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Booking'
-        //     }
-        // ],
-        // upcomingBookings:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Booking'
-        //     }
-        // ],
         bookings:[
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Booking'
             }
         ],
-        // currentDisputes:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Dispute'
-        //     }
-        // ],
-        // pastDisputes:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Dispute'
-        //     }
-        // ],
         disputes:[
             {
                 type: mongoose.Schema.Types.ObjectId,
@@ -78,18 +48,6 @@ const hotelSchema = new mongoose.Schema (
             type: Number,
             default: 0
         },
-        // availableRooms:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Room'
-        //     }
-        // ],
-        // occupiedRooms:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Room'
-        //     }
-        // ],
         rooms:[
             {
                 type: mongoose.Schema.Types.ObjectId,

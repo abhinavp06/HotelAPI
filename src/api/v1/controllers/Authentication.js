@@ -13,7 +13,7 @@ exports.signUpCustomer = async (req,res) => {
     try {
         await newCustomer.save()
         await sendRegistrationEmail(email, newCustomer.customerID)
-        res.status(201).json(`Sign up successful! A mail has been sent regarding your Customer ID.`);
+        res.status(201).json({message: `Sign up successful! A mail has been sent regarding your Customer ID.`});
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -25,13 +25,13 @@ exports.signInCustomer = async (req,res,next) => {
             return res.status(400).json({ errors: err})
         }
         if(!user) {
-            return res.status(400).json({errors: "No customer found"})
+            return res.status(400).json({message: `No customer found`})
         }
         req.logIn(user , function(err){
             if(err){
                 return res.status(400).json({ errors: err})
             }
-            return res.status(200).json({ success: `Logged in ${user.customerID}`})
+            return res.status(200).json({ message: `Logged in ${user.customerID}`})
         })
     })(req,res,next)
 }
@@ -45,7 +45,7 @@ exports.signUpHotel = async (req,res) => {
     try {
         await newHotel.save()
         await sendRegistrationEmail(email, newHotel.hotelID)
-        res.status(201).json(`Sign up successful! A mail has been sent regarding your Hotel ID.`);
+        res.status(201).json({message: `Sign up successful! A mail has been sent regarding your Hotel ID.`});
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -54,16 +54,16 @@ exports.signUpHotel = async (req,res) => {
 exports.signInHotel = async (req,res,next) => {
     passport.authenticate("hotel-local", function(err, user, info) {
         if(err) {
-            return res.status(400).json({ errors: err})
+            return res.status(400).json({ message: err})
         }
         if(!user) {
-            return res.status(400).json({errors: "No hotel found"})
+            return res.status(404).json({message: `No hotel found`})
         }
         req.logIn(user , function(err){
             if(err){
                 return res.status(400).json({ errors: err})
             }
-            return res.status(200).json({ success: `Logged in ${user.hotelID}`})
+            return res.status(200).json({ message: `Logged in ${user.hotelID}`})
         })
     })(req,res,next)
 }
@@ -71,5 +71,5 @@ exports.signInHotel = async (req,res,next) => {
 // SIGN OUT
 exports.signOut = async(req,res) => {
     req.logout()
-    return res.status(200).json({ success: 'Logged out successfully'})
+    return res.status(200).json({ message: 'Logged out successfully'})
 }

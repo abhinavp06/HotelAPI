@@ -1,3 +1,7 @@
+// NOT IN USE ANYMORE
+
+
+
 /*
 NAIVE LOGIC
 
@@ -38,17 +42,3 @@ Also add the room ID to the booking.
 TO CONVERT SET TO ARRAY:
 Array.from(setName)
 */
-
-const { dateToIndexConverter } = require("./DateToIndexConverter")
-
-exports.findAllAvailableHotels = async(fromDate, toDate) => {
-    // DATE FORMAT IS MM/DD/YYYY
-    // const { fromDate, toDate } = req.body
-    const fromIndex = dateToIndexConverter(fromDate)
-    const toIndex = dateToIndexConverter(toDate)
-    
-}
-
-exports.findAvailableRoomOfHotel = async (hotelID) => {
-
-}

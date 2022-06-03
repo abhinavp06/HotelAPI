@@ -1,4 +1,3 @@
-// TODO
 const Dispute = require("../models/Dispute")
 const Hotel = require("../models/Hotel")
 const { sendDisputeSolvedEmailToCustomer, sendDisputeSolvedEmailToHotel, sendNewDisputeEmailToCustomer, sendNewDisputeEmailToHotel } = require("../services/EmailSender")
@@ -56,11 +55,11 @@ exports.getDisputes = async (req,res) => {
 
 exports.getDisputeByID = async (req,res) => {
     const { disputeID } = req.params
-    try{
-        const dispute = await Dispute.findOne({disputeID: disputeID})
+    const dispute = await Dispute.findOne({disputeID: disputeID})
+    if(dispute == null){
+        return res.status(404).json({message: `Dispute not found! Kindly recheck the Dispute ID entered.`})
+    }else{
         return res.status(200).json(dispute)
-    }catch(error){
-        return res.status(404).json({message: `Dispute with ID ${disputeID} not found.Kindly recheck.`})
     }
 }
 
@@ -77,6 +76,6 @@ exports.markDisputeAsSolved = async (req,res) => {
         await sendDisputeSolvedEmailToHotel(hotel.email, disputeID)
         return res.status(201).json({message: `Updated dispute status!`})
     }catch(error){
-        return res.status(500).json({message: error})
+        return res.status(500).json(error)
     }
 }

@@ -19,61 +19,7 @@ const dayIndexSchema = new mongoose.Schema(
                 ref: 'Room'
             }
         ]
-        /*
-        hotelsOccupied:[
-            {
-                hotel:{
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'Hotel'
-                    // type: Number
-                },
-                roomsOccupied:[
-                    {
-                        type: mongoose.Schema.Types.ObjectId,
-                        ref: 'Room'
-                    }
-                    // {
-                    //     type: Number
-                    // }
-                ]
-            }
-        ],
-        */
-        /*
-        hotelsOccupied:[
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'OccHotelModel'
-            }
-        ]
-        */
     }
 )
-
-/*
-// SAMPLE MODEL
-const temp = new DayIndex({
-    dayIndex: -1,
-    hotelsOccupied:[
-        {
-            hotel: 22, (hotel ID here)
-            roomsOccupied: [22,23,24] (array of room IDs)
-        },
-        {
-            hotel: 21,
-            roomsOccupied: [1,2,3,4]
-        }
-    ]
-})
-temp.save()
-
-for(var i=0; i<temp.hotelsOccupied.length;i++){
-    if(temp.hotelsOccupied[i].hotel == 22)
-    {
-        console.log(`Result: ${temp.hotelsOccupied[i].roomsOccupied}`)
-        break;
-    }
-}
-*/
 
 module.exports = mongoose.model("DayIndex", dayIndexSchema)

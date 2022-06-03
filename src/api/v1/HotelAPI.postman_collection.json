@@ -1,0 +1,870 @@
+{
+	"info": {
+		"_postman_id": "4aabc9bf-6770-4d3f-bd72-27e5a02634ab",
+		"name": "HotelAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14027446"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "Authorization",
+					"item": [
+						{
+							"name": "Customer",
+							"item": [
+								{
+									"name": "signUpCustomer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Abhinav Parashar\",\r\n    \"email\": \"aparasharchd06@gmail.com\",\r\n    \"password\": \"password\",\r\n    \"phoneNum\": \"9999999999\"\r\n}"
+										},
+										"url": {
+											"raw": "https://abhinavp06hotel.herokuapp.com/v1/auth/signup/customer",
+											"protocol": "https",
+											"host": [
+												"abhinavp06hotel",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"v1",
+												"auth",
+												"signup",
+												"customer"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "signInCustomer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"customerID\":\"CU_Abhinavapar9999\",\r\n    \"password\":\"password\"\r\n}"
+										},
+										"url": {
+											"raw": "https://abhinavp06hotel.herokuapp.com/v1/auth/signin/customer",
+											"protocol": "https",
+											"host": [
+												"abhinavp06hotel",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"v1",
+												"auth",
+												"signin",
+												"customer"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Hotel",
+							"item": [
+								{
+									"name": "signUpHotel",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Hotel 1\",\r\n    \"email\": \"hotel1@gmail.com\",\r\n    \"password\": \"password\",\r\n    \"phoneNum\": \"9999999999\",\r\n    \"address\": \"Chandigarh\"\r\n}"
+										},
+										"url": {
+											"raw": "https://abhinavp06hotel.herokuapp.com/v1/auth/signup/hotel",
+											"protocol": "https",
+											"host": [
+												"abhinavp06hotel",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"v1",
+												"auth",
+												"signup",
+												"hotel"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "signInHotel",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"hotelID\":\"HO_Hotelhote9999\",\r\n    \"password\":\"password\"\r\n}"
+										},
+										"url": {
+											"raw": "https://abhinavp06hotel.herokuapp.com/v1/auth/signin/hotel",
+											"protocol": "https",
+											"host": [
+												"abhinavp06hotel",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"v1",
+												"auth",
+												"signin",
+												"hotel"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "signOut",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/auth/signout",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List View",
+					"item": [
+						{
+							"name": "ViewAllHotels",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/hotels",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"hotels"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetByID",
+					"item": [
+						{
+							"name": "getHotelByID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/admin/hotels/HO_Hotelhote9999",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"hotels",
+										"HO_Hotelhote9999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCustomerByID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/admin/customers/CU_Abhinavapar9999",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"customers",
+										"CU_Abhinavapar9999"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tests",
+					"item": [
+						{
+							"name": "whoIsLoggedIn",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/test/whoIsLoggedIn",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"test",
+										"whoIsLoggedIn"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Rooms",
+					"item": [
+						{
+							"name": "createRoom",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Room 3\",\r\n    \"price\": \"799\"\r\n}"
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/rooms/create",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRooms",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/rooms",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"rooms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRoomCount",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/rooms/count",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"count"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteRoom",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/rooms/629a2502ae67b1518a36438b",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"629a2502ae67b1518a36438b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRoomById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/rooms/<room _id>",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"<room _id>"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkIn",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerID\": \"CU_Abhinavapar9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/rooms/checkin/629a24f9ae67b1518a364382",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"checkin",
+										"629a24f9ae67b1518a364382"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkOut",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/rooms/checkout/629a24f9ae67b1518a364382",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"checkout",
+										"629a24f9ae67b1518a364382"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Disputes",
+					"item": [
+						{
+							"name": "createDispute",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"hotelID\": \"HO_Hotelhote6410\",\r\n    \"bookingID\": \"TEST_BOOKING_ID\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/disputes/create",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"disputes",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "markAsSolved",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/disputes/<disputeID>/solved",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"disputes",
+										"<disputeID>",
+										"solved"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDisputes",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/disputes",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"disputes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDisputeByID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"disputeID\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/disputes/<disputeID>",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"disputes",
+										"<disputeID>"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bookings",
+					"item": [
+						{
+							"name": "getBookings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkIfHotelHasRoom",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fromDate\": \"01/01/2022\",\r\n    \"toDate\": \"01/02/2022\"\r\n}"
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/bookings/check/HO_Hotelhote9999",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"bookings",
+										"check",
+										"HO_Hotelhote9999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createBooking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fromDate\": \"01/01/2022\",\r\n    \"toDate\": \"01/02/2022\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/bookings/new/HO_Hotelhote9999",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"bookings",
+										"new",
+										"HO_Hotelhote9999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteBooking",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/bookings/cancel/B_HO_HoCU_Ab1654269543642",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"bookings",
+										"cancel",
+										"B_HO_HoCU_Ab1654269543642"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getBookingByID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://abhinavp06hotel.herokuapp.com/v1/bookings/B_HO_HoCU_Ab1654269543642",
+									"protocol": "https",
+									"host": [
+										"abhinavp06hotel",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"v1",
+										"bookings",
+										"B_HO_HoCU_Ab1654269543642"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://abhinavp06hotel.herokuapp.com/",
+							"protocol": "https",
+							"host": [
+								"abhinavp06hotel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvalidURL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://abhinavp06hotel.herokuapp.com/helloooo",
+							"protocol": "https",
+							"host": [
+								"abhinavp06hotel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"helloooo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

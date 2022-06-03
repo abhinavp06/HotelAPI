@@ -4,6 +4,6 @@ exports.isSignedIn = async(req, res, next) => {
     if (req.user) {
         next();
     } else {
-        res.json({failure: `Please sign in first.`})
+        res.json({message: `Please sign in first.`})
     }
 }

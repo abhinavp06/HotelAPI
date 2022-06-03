@@ -29,36 +29,12 @@ const customerSchema = new mongoose.Schema(
             max: 10,
             unique: true
         },
-        // pastBookings:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Booking'
-        //     }
-        // ],
-        // upcomingBookings:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Booking'
-        //     }
-        // ],
         bookings:[
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Booking'
             }
         ],
-        // currentDisputes:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Dispute'
-        //     }
-        // ],
-        // pastDisputes:[
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Dispute'
-        //     }
-        // ],
         disputes:[
             {
                 type: mongoose.Schema.Types.ObjectId,
