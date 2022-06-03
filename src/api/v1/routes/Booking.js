@@ -12,10 +12,189 @@ const router = express.Router()
 
 const { isSignedIn } = require("../middlewares/Authentication")
 
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      Booking:
+ *         type: object    
+ *         required:
+ *              - bookingFromDate
+ *              - bookingToDate
+ *         properties:
+ *               id:
+ *                 type: string
+ *                 description: The object id of the booking
+ *               bookingID: 
+ *                 type: string
+ *                 description: Customer ID generated for a booking
+ *               bookingFromDate:
+ *                 type: string
+ *                 description: From which date the customer wants to book a room
+ *               bookingToDate:
+ *                 type: string
+ *                 description: Till which date the customer wants to book a room
+*/
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      Hotel:
+ *         type: object    
+ *         required:
+ *              - name
+ *              - email
+ *              - password
+ *              - address
+ *              - phoneNum 
+ *         properties:
+ *               id:
+ *                 type: string
+ *                 description: The object id of the hotel
+ *               name: 
+ *                 type: string
+ *                 description: Name of the hotel
+ *               email:
+ *                  type: string
+ *                  description: Email of the hotel
+ *               password: 
+ *                  type: string
+ *                  description: Password of the hotel
+ *               address:
+ *                   type: string
+ *                   description: Address of the hotel
+ *               phoneNum:
+ *                  type: number
+ *                  description: Phone number of the hotel
+*/
+
+/**
+ * @swagger
+ * tags:
+ *    name: Bookings
+ *    description: All routes related to bookings
+ */
+
+/**
+ * @swagger
+ * /v1/bookings:
+ *  get:
+ *     tags: [Bookings]
+ *     summary: Returns a list of bookings of the logged in user
+ *     responses:
+ *          200:
+ *             description: List of bookings
+ *             content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/Booking'
+ *          404:
+ *            description: No bookings found
+ */
 router.get("/", isSignedIn, getBookings)
+
+/**
+ * @swagger
+ * /v1/bookings/{bookingID}:
+ *  get:
+ *     tags: [Bookings]
+ *     summary: Returns a Booking object
+ *     parameters:
+ *      - in: path
+ *        name: bookingID
+ *        schema:
+ *          type: string
+ *          required: true
+ *          description: The custom booking ID
+ *     responses:
+ *          200:
+ *             description: The requested booking object
+ *             content:
+ *                  application/json:
+ *                      schema:
+ *                          items:
+ *                              $ref: '#/components/schemas/Booking'
+ *          400:
+ *            description: No booking found
+ */
 router.get("/:bookingID", isSignedIn, getBookingByID)
+
+/**
+ * @swagger
+ * /v1/bookings/check/{hotelID}:
+ *  get:
+ *     tags: [Bookings]
+ *     summary: Returns a statement indicating if a room is available or not
+ *     parameters:
+ *      - in: path
+ *        name: hotelID
+ *        schema:
+ *          type: string
+ *          required: true
+ *          description: Custom hotel ID
+ *     requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                          schema:
+ *                             $ref: '#/components/schemas/Booking'   
+ *     responses:
+ *          200:
+ *             description: Statement
+ *          404:
+ *            description: No room found
+ */
 router.get("/check/:hotelID",isSignedIn, checkIfHotelHasRoomAvailable)
+
+/**
+ * @swagger
+ * /v1/bookings/new/{hotelID}:
+ *  post:
+ *     tags: [Bookings]
+ *     summary: Create a new booking
+ *     parameters:
+ *      - in: path
+ *        name: hotelID
+ *        schema:
+ *          type: string
+ *          required: true
+ *          description: Custom hotel ID
+ *     requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                          schema:
+ *                             $ref: '#/components/schemas/Booking'   
+ *     responses:
+ *          200:
+ *             description: Booking successfully created
+ *          500:
+ *            description: Some server error
+ */
 router.post("/new/:hotelID", isSignedIn, createNewBooking)
+
+/**
+ * @swagger
+ * /v1/bookings/cancel/{bookingID}:
+ *  delete:
+ *     tags: [Bookings]
+ *     summary: Delete booking
+ *     parameters:
+ *      - in: path
+ *        name: bookingID
+ *        schema:
+ *          type: string
+ *          required: true
+ *          description: The booking custom ID
+ *     responses:
+ *          200:
+ *             description: Booking deleted successfully
+ *          500:
+ *             description: Some server error
+ */
 router.delete("/cancel/:bookingID", isSignedIn, cancelBooking)
 
 module.exports = router

@@ -96,7 +96,7 @@ exports.checkIfHotelHasRoomAvailable = async (req,res) => {
        if(room == null)
             return res.status(404).json({message: 'No available rooms!'})
         else
-            return res.status(404).json({message: 'Room is available'})
+            return res.status(200).json({message: 'Room is available'})
     }
     catch(error){
         return res.json({message: error})
