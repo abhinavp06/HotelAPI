@@ -5,7 +5,7 @@ const cors = require("cors")
 const session = require("express-session")
 const passport = require("./config/Passport_Setup")
 const { setUpMongo } = require("../../serverConfig/MongoDB_Setup")
-const { setUpDayIndex } = require("./config/DayIndex_Setup")
+// const { setUpDayIndex } = require("./config/DayIndex_Setup")
 
 // IMPORTING ROUTES
 const authRoutes = require("./routes/Authentication")
@@ -20,7 +20,7 @@ const app = express()
 
 // SETTING UP
 setUpMongo()
-setUpDayIndex()
+// setUpDayIndex()
 
 // USE LIBRARIES
 app.use(morgan('common'))
