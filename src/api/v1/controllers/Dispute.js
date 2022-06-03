@@ -4,12 +4,12 @@ const { sendDisputeSolvedEmailToCustomer, sendDisputeSolvedEmailToHotel, sendNew
 const { genDisputeID } = require("../helpers/GenerateID")
 
 exports.createDispute = async (req,res) => {
-    // From body we get hotelID and bookingID
-    // generate disputeID ID by passing hotelID and customerID
+    // GethotelID and bookingID
+    // Generate disputeID ID by passing hotelID and customerID
     // Add dispute to customer's dispute array and hotel's dispute array
     // Send email to customer regarding dispute details
     // Send email to hotel regarding dispute details
-    const { hotelID, bookingID } = req.body
+    const { hotelID, bookingID } = req.params
     const hotel = await Hotel.findOne({hotelID: hotelID})
     const disputeID = genDisputeID(hotelID, req.user.customerID)
 

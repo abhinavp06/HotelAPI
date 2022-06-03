@@ -109,6 +109,8 @@ router.get("/count", isSignedIn,getRoomCount)
  *                      schema:
  *                          items:
  *                              $ref: '#/components/schemas/Room'
+ *          400:
+ *             description: No room found
  */
 router.get("/:roomID", isSignedIn,getRoomById)
 
