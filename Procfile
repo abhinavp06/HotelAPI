@@ -1,0 +1,1 @@
+worker: node src/api/v1/index.js
