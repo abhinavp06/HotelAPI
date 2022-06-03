@@ -11,7 +11,7 @@ exports.createRoom = async(req,res) => {
         // await req.user.availableRooms.push(newRoom)
         await req.user.rooms.push(newRoom)
         await req.user.save()
-        res.status(201).json(`New room created!`)
+        res.status(201).json({message: `Room deleted.`})
     }catch(error){
         res.status(501).json({message: error.message})
     }
