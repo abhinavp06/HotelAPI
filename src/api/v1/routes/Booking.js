@@ -130,7 +130,7 @@ router.get("/:bookingID", isSignedIn, getBookingByID)
 
 /**
  * @swagger
- * /v1/bookings/check/{hotelID}:
+ * /v1/bookings/check/{hotelID}/{fromDate}?&{toDate}:
  *  get:
  *     tags: [Bookings]
  *     summary: Returns a statement indicating if a room is available or not
@@ -141,23 +141,29 @@ router.get("/:bookingID", isSignedIn, getBookingByID)
  *          type: string
  *          required: true
  *          description: Custom hotel ID
- *     requestBody:
+ *      - in: path
+ *        name: fromDate
+ *        schema:
+ *          type: string
  *          required: true
- *          content:
- *              application/json:
- *                          schema:
- *                             $ref: '#/components/schemas/Booking'   
+ *          description: Starting date
+ *      - in: path
+ *        name: toDate
+ *        schema:
+ *          type: string
+ *          required: true
+ *          description: Ending date  
  *     responses:
  *          200:
  *             description: Statement
  *          404:
  *            description: No room found
  */
-router.get("/check/:hotelID",isSignedIn, checkIfHotelHasRoomAvailable)
+router.get("/check/:hotelID/:fromDate?&:toDate:",isSignedIn, checkIfHotelHasRoomAvailable)
 
 /**
  * @swagger
- * /v1/bookings/new/{hotelID}:
+ * /v1/bookings/new/{hotelID}/{fromDate}?&{toDate}:
  *  post:
  *     tags: [Bookings]
  *     summary: Create a new booking
@@ -168,19 +174,25 @@ router.get("/check/:hotelID",isSignedIn, checkIfHotelHasRoomAvailable)
  *          type: string
  *          required: true
  *          description: Custom hotel ID
- *     requestBody:
+ *      - in: path
+ *        name: fromDate
+ *        schema:
+ *          type: string
  *          required: true
- *          content:
- *              application/json:
- *                          schema:
- *                             $ref: '#/components/schemas/Booking'   
+ *          description: Starting date
+ *      - in: path
+ *        name: toDate
+ *        schema:
+ *          type: string
+ *          required: true
+ *          description: Ending date
  *     responses:
  *          200:
  *             description: Booking successfully created
  *          500:
  *            description: Some server error
  */
-router.post("/new/:hotelID", isSignedIn, createNewBooking)
+router.post("/new/:hotelID/:fromDate?&:toDate:", isSignedIn, createNewBooking)
 
 /**
  * @swagger
