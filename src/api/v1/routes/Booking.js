@@ -130,7 +130,7 @@ router.get("/:bookingID", isSignedIn, getBookingByID)
 
 /**
  * @swagger
- * /v1/bookings/check/{hotelID}/{fromDate}?&{toDate}:
+ * /v1/bookings/check/{hotelID}/{fromDate}/{toDate}:
  *  get:
  *     tags: [Bookings]
  *     summary: Returns a statement indicating if a room is available or not
@@ -163,7 +163,7 @@ router.get("/check/:hotelID/:fromDate/:toDate",isSignedIn, checkIfHotelHasRoomAv
 
 /**
  * @swagger
- * /v1/bookings/new/{hotelID}/{fromDate}?&{toDate}:
+ * /v1/bookings/new/{hotelID}/{fromDate}/{toDate}:
  *  post:
  *     tags: [Bookings]
  *     summary: Create a new booking
