@@ -85,8 +85,12 @@ async function occupiedRoomsFinder(fromIndex, toIndex){
 exports.checkIfHotelHasRoomAvailable = async (req,res) => {
     const { hotelID } = req.params
     // const { fromDate, toDate } = req.body
-    const fromDate = req.params.fromDate
-    const toDate = req.params.toDate
+    let fromDate = req.params.fromDate.toString()
+    fromDate = fromDate.replace(/%2F/g, "/")
+    fromDate = new Date(fromDate)
+    let toDate = req.params.toDate.toString()
+    toDate = toDate.replace(/%2F/g, "/")
+    toDate = new Date(toDate)
     const hotel = await Hotel.findOne({hotelID: hotelID})
     const fromIndex = dateToIndexConverter(fromDate)
     const toIndex = dateToIndexConverter(toDate)
@@ -108,8 +112,12 @@ exports.checkIfHotelHasRoomAvailable = async (req,res) => {
 exports.createNewBooking = async(req,res) => {
     const { hotelID } = req.params
     // const { fromDate, toDate } = req.body
-    const fromDate = req.params.fromDate
-    const toDate = req.params.toDate
+    let fromDate = req.params.fromDate.toString()
+    fromDate = fromDate.replace(/%2F/g, "/")
+    fromDate = new Date(fromDate)
+    let toDate = req.params.toDate.toString()
+    toDate = toDate.replace(/%2F/g, "/")
+    toDate = new Date(toDate)
     const hotel = await Hotel.findOne({hotelID: hotelID})
     const fromIndex = dateToIndexConverter(fromDate)
     const toIndex = dateToIndexConverter(toDate)
