@@ -2,7 +2,7 @@
 An API where Customers and Hotels can sign up and perform actions.
 
 ## Technology Used:
-### MongoDB (hosted on Atlas), Express, Node.js, Swagger
+### MongoDB (hosted on Atlas), Express, Node.js, Swagger, Heroku
 
 ## INSTRUCTIONS:
 ### To run this API:
