@@ -159,7 +159,7 @@ router.get("/:bookingID", isSignedIn, getBookingByID)
  *          404:
  *            description: No room found
  */
-router.get("/check/:hotelID/:fromDate?&:toDate:",isSignedIn, checkIfHotelHasRoomAvailable)
+router.get("/check/:hotelID/:fromDate/:toDate",isSignedIn, checkIfHotelHasRoomAvailable)
 
 /**
  * @swagger
@@ -192,7 +192,7 @@ router.get("/check/:hotelID/:fromDate?&:toDate:",isSignedIn, checkIfHotelHasRoom
  *          500:
  *            description: Some server error
  */
-router.post("/new/:hotelID/:fromDate?&:toDate:", isSignedIn, createNewBooking)
+router.post("/new/:hotelID/:fromDate/:toDate", isSignedIn, createNewBooking)
 
 /**
  * @swagger
