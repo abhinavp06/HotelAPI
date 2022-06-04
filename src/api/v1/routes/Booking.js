@@ -29,10 +29,10 @@ const { isSignedIn } = require("../middlewares/Authentication")
  *                 type: string
  *                 description: Customer ID generated for a booking
  *               bookingFromDate:
- *                 type: string
+ *                 type: date
  *                 description: From which date the customer wants to book a room
  *               bookingToDate:
- *                 type: string
+ *                 type: date
  *                 description: Till which date the customer wants to book a room
 */
 
