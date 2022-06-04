@@ -116,7 +116,7 @@ router.get("/:disputeID", isSignedIn, getDisputeByID)
 
 /**
  * @swagger
- * /v1/disputes/{disputeID}:
+ * /v1/disputes/{disputeID}/solved:
  *  post:
  *     tags: [Disputes]
  *     summary: Returns a success message
