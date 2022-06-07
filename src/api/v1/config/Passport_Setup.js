@@ -24,9 +24,9 @@ passport.deserializeUser ((user, done) => {
 //CUSTOMER
 passport.use("customer-local",
     new LocalStrategy({ usernameField: "customerID"}, (customerID, password, done) => {
-        Customer.findOne({ username: customerID }).then(user => {
+        Customer.findOne({ customerID: customerID }).then(user => {
             if(!user){
-                return res.json({message: 'No user with that username'})
+                return res.json({message: 'No cystomer with that customer ID. Kindly check your customer ID!'})
             }
             else {
                 return done(null,user)
@@ -39,7 +39,7 @@ passport.use("customer-local",
 
 // HOTEL
 passport.use("hotel-local", new LocalStrategy({ usernameField: "hotelID"}, (hotelID, password, done) => {
-    Hotel.findOne({ username: hotelID }).then(user => {
+    Hotel.findOne({ hotelID: hotelID }).then(user => {
         if(!user){
             return res.json({message: 'No hotel with that hotel ID. Kindly check your hotel ID!'})
         }
