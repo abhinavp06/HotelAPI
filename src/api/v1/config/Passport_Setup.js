@@ -26,10 +26,20 @@ passport.use("customer-local",
     new LocalStrategy({ usernameField: "customerID"}, (customerID, password, done) => {
         Customer.findOne({ customerID: customerID }).then(user => {
             if(!user){
-                return res.json({message: 'No cystomer with that customer ID. Kindly check your customer ID!'})
+                return res.json({message: 'No customer with that customer ID. Kindly check your customer ID!'})
             }
             else {
-                return done(null,user)
+                bcrypt.compare(password, user.password, (err, isMatch) => {
+                    if(err){
+                        throw err
+                    }
+                    if(isMatch) {
+                        return done(null, user)
+                    }
+                    else{
+                        return done(null, false, {message: 'Password incorrect'})
+                    }
+                })
             }
         }).catch(err => {
             return done(null, false, { message: err})
@@ -44,7 +54,17 @@ passport.use("hotel-local", new LocalStrategy({ usernameField: "hotelID"}, (hote
             return res.json({message: 'No hotel with that hotel ID. Kindly check your hotel ID!'})
         }
         else {
-            return done(null,user)
+            bcrypt.compare(password, user.password, (err, isMatch) => {
+                if(err){
+                    throw err
+                }
+                if(isMatch) {
+                    return done(null, user)
+                }
+                else{
+                    return done(null, false, {message: 'Password incorrect'})
+                }
+            })
         }
     }).catch(err => {
         return done(null, false, { message: err})

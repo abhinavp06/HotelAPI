@@ -25,7 +25,7 @@ exports.signInCustomer = async (req,res,next) => {
             return res.status(400).json({ errors: err})
         }
         if(!user) {
-            return res.status(400).json({message: `No customer found`})
+            return res.status(404).json({message: `Invalid credentials.`})
         }
         req.logIn(user , function(err){
             if(err){
@@ -57,7 +57,7 @@ exports.signInHotel = async (req,res,next) => {
             return res.status(400).json({ message: err})
         }
         if(!user) {
-            return res.status(404).json({message: `No hotel found`})
+            return res.status(404).json({message: `Invalid credentials.`})
         }
         req.logIn(user , function(err){
             if(err){
